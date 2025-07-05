@@ -1,0 +1,64 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     twoPhaseMixingCentralFoamHLLC3;
+
+startFrom       latestTime;//startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         8e-4;//0.002;
+
+deltaT          1e-9;//1e-6;
+
+writeControl    adjustable;
+
+writeInterval   8e-4;//1e-3;//1e-4;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  10;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable yes;
+
+adjustTimeStep   true;//false;
+
+maxCo           0.3;
+maxAlphaCo      1;
+
+maxDeltaT       2.5e-06;
+
+CourantType     cellCourant;
+functions
+{
+	sample
+	{ 
+		#include "sampleDict"
+	}
+}
+
+// ************************************************************************* //

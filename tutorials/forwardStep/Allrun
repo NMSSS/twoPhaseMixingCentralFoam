@@ -1,0 +1,1 @@
+mpirun --oversubscribe -np 12 twoPhaseMixingHLLCFoam -parallel | tee log.HLLC
