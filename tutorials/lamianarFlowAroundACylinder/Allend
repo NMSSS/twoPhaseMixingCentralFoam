@@ -1,0 +1,3 @@
+reconstructPar
+
+rm -rf processor*
