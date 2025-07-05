@@ -1,0 +1,22 @@
+kappaFunctions/kappaFunction/kappaFunction.C
+kappaFunctions/derived/acceleratedSonicCourantInverse/acceleratedSonicCourantInverseKappaFunction.C
+kappaFunctions/derived/sonicCourantInverse/sonicCourantInverseKappaFunction.C
+kappaFunctions/derived/standardMachToAcCourantRatio/standardMachToAcCourantRatioKappaFunction.C
+kappaFunctions/derived/standardAndSonicInverseMach/standardAndSonicInverseMachKappaFunction.C
+
+compressibleTwoPhaseThermo/simplePhasePsiThermo.C
+compressibleTwoPhaseThermo/compressibleTwoPhaseMixture.C
+compressibleTwoPhaseThermo/compressibleTwoPhaseMixtureThermo.C
+
+/*compressibleTwoPhaseThermo_origin/simplePhasePsiThermo.C
+compressibleTwoPhaseThermo_origin/compressibleTwoPhaseMixture.C
+compressibleTwoPhaseThermo_origin/compressibleTwoPhaseMixtureThermo.C*/
+
+/*centralMULES/centralMULES.C*/
+centralMULESSUSP/centralMULESSUSP.C
+
+Tools/correctCentralACMIInterpolation.C
+
+thermophysicalProperties/thermo/additionalRhoThermos.C
+
+LIB = $(FOAM_USER_LIBBIN)/libpimpleCentralHLLC2
