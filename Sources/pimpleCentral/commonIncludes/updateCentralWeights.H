@@ -24,10 +24,10 @@
         }
 
         c         = sqrt(thermo.Cp()/thermo.Cv() / psi);  //this is only updated for the following analysis
-        cf_own      = fvc::interpolate(c, own, "reconstruct(psi)");
-        cf_nei      = fvc::interpolate(c, nei, "reconstruct(psi)");
-        // surfaceScalarField T_own = fvc::interpolate(T, own, "reconstruct(psi)");
-        // surfaceScalarField T_nei = fvc::interpolate(T, nei, "reconstruct(psi)");
+        // cf_own      = fvc::interpolate(c, own, "reconstruct(psi)");
+        // cf_nei      = fvc::interpolate(c, nei, "reconstruct(psi)");
+        surfaceScalarField T_own = fvc::interpolate(T, own, "reconstruct(psi)");
+        surfaceScalarField T_nei = fvc::interpolate(T, nei, "reconstruct(psi)");
 
         // /*
         // const simplePhasePsiThermo& thermoGas = thermo.thermoGas();
@@ -35,13 +35,13 @@
         // Info<< "thermoLiq rho: " << thermo.thermoLiq().rho() << endl;
         // */
 
-        // surfaceScalarField rho_liq_own = fvc::interpolate(thermo.thermoLiq().rho(), own, "reconstruct(rho");
-        // surfaceScalarField rho_liq_nei = fvc::interpolate(thermo.thermoLiq().rho(), nei, "reconstruct(rho)");
-        // surfaceScalarField rho_gas_own = fvc::interpolate(thermo.thermoGas().rho(), own, "reconstruct(rho)");
-        // surfaceScalarField rho_gas_nei = fvc::interpolate(thermo.thermoGas().rho(), nei, "reconstruct(rho)");
-        // surfaceScalarField YbarLiqf    = fvc::interpolate(YbarLiq, phi, "reconstruct(YbarLiq)");
-        // cf_own = thermo.Cfm(p_own, T_own, YbarLiqf, rho_liq_own, rho_gas_own);
-        // cf_nei = thermo.Cfm(p_nei, T_nei, YbarLiqf, rho_liq_nei, rho_gas_nei);
+        surfaceScalarField rho_liq_own = fvc::interpolate(thermo.thermoLiq().rho(), own, "reconstruct(rho");
+        surfaceScalarField rho_liq_nei = fvc::interpolate(thermo.thermoLiq().rho(), nei, "reconstruct(rho)");
+        surfaceScalarField rho_gas_own = fvc::interpolate(thermo.thermoGas().rho(), own, "reconstruct(rho)");
+        surfaceScalarField rho_gas_nei = fvc::interpolate(thermo.thermoGas().rho(), nei, "reconstruct(rho)");
+        surfaceScalarField YbarLiqf    = fvc::interpolate(YbarLiq, phi, "reconstruct(YbarLiq)");
+        cf_own = thermo.Cfm(p_own, T_own, YbarLiqf, rho_liq_own, rho_gas_own);
+        cf_nei = thermo.Cfm(p_nei, T_nei, YbarLiqf, rho_liq_nei, rho_gas_nei);
 
         Info << "max/min cf_own:" << max(cf_own).value() << "/" << min(cf_own).value() << endl;
         Info << "max/min cf_nei:" << max(cf_nei).value() << "/" << min(cf_nei).value() << endl;
